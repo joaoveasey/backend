@@ -6,20 +6,20 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
 model Produto {
-  id          Int      @id @default(autoincrement())
+  id          Int    @id @default(autoincrement())
   nome        String
-  descricao   String
+  descricao   String @db.VarChar(500)
   marca       String
   modelo      String
-  imagem      String
+  imagem      String @db.VarChar(500)
   nota        Float
-  videoReview String
-  tags        String[]
+  videoReview String @db.VarChar(500)
+  //tags        String[] // nao suportado pelo mysql
 
   precoBase        Float
   precoPromocional Float
